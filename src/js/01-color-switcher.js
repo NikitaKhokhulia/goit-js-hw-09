@@ -11,11 +11,14 @@ function getRandomHexColor() {
 function handelBodyColor() {
   refs.bodyColor.style.backgroundColor = getRandomHexColor();
 }
+let timerId = null;
 
 function intervalColor() {
   timerId = setInterval(handelBodyColor, 1000);
   refs.startBtn.disabled = true;
   refs.stopBtn.disabled = false;
+
+  console.log(timerId);
 }
 
 function clearIntervalColor() {

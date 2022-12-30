@@ -18,9 +18,11 @@ const options = {
     }
     if (selectedDate > options.defaultDate) {
       refs.startBtn.disabled = false;
+      // console.log(options.enableTime);
     }
   },
 };
+console.log(options);
 
 const fp = flatpickr('#datetime-picker', options);
 
@@ -34,15 +36,17 @@ refs.timerEl.style.justifyContent = 'center';
 refs.timerEl.style.gap = '10px';
 refs.startBtn.disabled = true;
 
+let timerId;
+
 const timer = {
   start() {
-    setInterval(() => {
+    timerId = setInterval(() => {
       const currentTime = Date.now();
       const deltaTime = selectedDate - currentTime;
       const { days, hours, minutes, seconds } = convertMs(deltaTime);
 
       if (deltaTime <= 0) {
-        this.stop();
+        stopTimer();
         return;
       }
 
@@ -57,18 +61,18 @@ const timer = {
       secondsEl.textContent = seconds;
     }, 1000);
   },
-
-  stop() {
-    clearInterval(this.setInterval);
-  },
 };
 
 function startTimer() {
   timer.start();
-  refs.startBtn.disabled = false;
+  refs.startBtn.disabled = true;
+  set.options.enableTime = false;
+  console.log(options.enableTime);
 }
 
-console.log(selectedDate);
+function stopTimer() {
+  clearInterval(timerId);
+}
 
 refs.startBtn.addEventListener('click', startTimer);
 
