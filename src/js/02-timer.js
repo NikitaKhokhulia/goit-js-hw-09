@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 let selectedDate = new Date();
 
 const options = {
-  enableTime: false,
+  enableTime: true,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
