@@ -31,8 +31,6 @@ const refs = {
   timerEl: document.querySelector('.timer'),
 };
 
-console.log(refs.inputFP);
-
 refs.timerEl.style.display = 'flex';
 refs.timerEl.style.justifyContent = 'center';
 refs.timerEl.style.gap = '10px';
