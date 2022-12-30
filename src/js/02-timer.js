@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 let selectedDate = new Date();
 
 const options = {
-  enableTime: true,
+  enableTime: false,
   time_24hr: true,
   defaultDate: new Date(),
   minuteIncrement: 1,
@@ -27,9 +27,13 @@ console.log(options);
 const fp = flatpickr('#datetime-picker', options);
 
 const refs = {
+  inputFP: document.querySelector('#datetime-picker'),
+
   startBtn: document.querySelector('button[data-start]'),
   timerEl: document.querySelector('.timer'),
 };
+
+console.log(refs.inputFP);
 
 refs.timerEl.style.display = 'flex';
 refs.timerEl.style.justifyContent = 'center';
@@ -66,7 +70,8 @@ const timer = {
 function startTimer() {
   timer.start();
   refs.startBtn.disabled = true;
-  set.options.enableTime = false;
+  refs.inputFP.disabled = true;
+  // options.enableTime = false;
   console.log(options.enableTime);
 }
 
