@@ -18,11 +18,9 @@ const options = {
     }
     if (selectedDate > options.defaultDate) {
       refs.startBtn.disabled = false;
-      // console.log(options.enableTime);
     }
   },
 };
-console.log(options);
 
 const fp = flatpickr('#datetime-picker', options);
 
@@ -71,8 +69,6 @@ function startTimer() {
   timer.start();
   refs.startBtn.disabled = true;
   refs.inputFP.disabled = true;
-  // options.enableTime = false;
-  console.log(options.enableTime);
 }
 
 function stopTimer() {
